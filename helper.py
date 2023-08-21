@@ -5,7 +5,7 @@ todos = []
 
 
 @dataclass
-class Item:
+class Todo:
     text: str
     isCompleted: bool = False
 
@@ -14,7 +14,7 @@ class Item:
 
 def add(todo):
     todo = todo.replace('b', 'bbb').replace('B', 'Bbb')
-    todos.append(Item(todo))
+    todos.append(Todo(todo))
 
 
 def get_all():
