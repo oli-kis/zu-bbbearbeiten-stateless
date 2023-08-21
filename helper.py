@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 
-items = []
+# Hier werden die Daten gespeichert.
+todos = []
 
 
 @dataclass
@@ -8,19 +9,21 @@ class Item:
     text: str
     isCompleted: bool = False
 
+# Hier findet die Ver - BBB -isierung statt. Dabei wird ein "b" mit drei "b" ersetzt.
 
-def add(text):
-    text = text.replace('b', 'bbb').replace('B', 'Bbb')
-    items.append(Item(text))
+
+def add(todo):
+    todo = todo.replace('b', 'bbb').replace('B', 'Bbb')
+    todos.append(Item(todo))
 
 
 def get_all():
-    return items
+    return todos
 
 
 def get(index):
-    return items[index]
+    return todos[index]
 
 
 def update(index):
-    items[index].isCompleted = not items[index].isCompleted
+    todos[index].isCompleted = not todos[index].isCompleted
