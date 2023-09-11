@@ -1,29 +1,38 @@
+import datetime
 from dataclasses import dataclass
+import operator
 
-# Hier werden die Daten gespeichert.
-todos = []
+items = []
 
 
 @dataclass
 class Todo:
-    text: str
+    title: str
+    date: datetime
     isCompleted: bool = False
 
-# Hier findet die Ver - BBB -isierung statt. Dabei wird ein "b" mit drei "b" ersetzt.
+
+# Hier findet die Ver-BBB-isierung statt
+def add(title, date):
+    title = title.replace("b", "bbb").replace("B", "Bbb")
+    date = datetime.datetime.strptime(date, "%Y-%m-%d")
+    items.append(Todo(title, date))
+    items.sort(key=operator.attrgetter("date"))
 
 
-def add(todo):
-    todo = todo.replace('b', 'bbb').replace('B', 'Bbb')
-    todos.append(Todo(todo))
-
-
+# Hier werden die Daten an Index weitergegeben
 def get_all():
-    return todos
+    return items
 
 
 def get(index):
-    return todos[index]
+    return items[index]
 
 
+# Hier werden die Daten gespeichert
 def update(index):
-    todos[index].isCompleted = not todos[index].isCompleted
+    items[index].isCompleted = not items[index].isCompleted
+
+
+def remove_all():
+    items.clear()
